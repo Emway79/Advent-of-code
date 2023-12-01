@@ -3,8 +3,6 @@ project(AdventOfCode2023)
 
 set(CMAKE_CXX_STANDARD 23)
 
-include_directories("C:/Curl")
-
 add_executable(AdventOfCode2023
         #MAIN
         main.cpp

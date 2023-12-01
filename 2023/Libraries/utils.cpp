@@ -1,7 +1,3 @@
-//
-// Created by Glenn on 20-Oct-23.
-//
-
 #include <string>
 #include <vector>
 #include <cmath>

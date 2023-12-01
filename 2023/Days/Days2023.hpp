@@ -1,7 +1,3 @@
-//
-// Created by Glenn on 30-Nov-23.
-//
-
 #ifndef ADVENTOFCODE_DAYS2023_HPP
 #define ADVENTOFCODE_DAYS2023_HPP
 

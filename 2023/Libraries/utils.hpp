@@ -1,6 +1,3 @@
-//
-// Created by Glenn on 20-Oct-23.
-//
 #ifndef EULER_PROJECT_UTILS_HPP
 #define EULER_PROJECT_UTILS_HPP
 
