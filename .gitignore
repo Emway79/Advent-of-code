@@ -1,0 +1,6 @@
+**/.idea
+**/Resources
+
+# 2023
+2023/cmake-build-debug
+2023/cmake-build-release
