@@ -13,7 +13,7 @@ add_executable(AdventOfCode2023
         Libraries/utils.cpp
 
         #DAYS
-        Days/Days2023.hpp
+        Days/Day.hpp
 
         Days/Day1.cpp
         Days/Day2.cpp

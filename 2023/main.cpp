@@ -2,7 +2,7 @@
 #include <chrono>
 #include <sstream>
 
-#include "Days/Days2023.hpp"
+#include "Days/Day.hpp"
 
 #define TERMINAL_PADDING 40
 
