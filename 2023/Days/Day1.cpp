@@ -1,9 +1,9 @@
+#include "Day.hpp"
 #include "../Libraries/utils.hpp"
 
 namespace AOC2023 {
 
 std::string num[] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-
 
 int64_t solveDay1Part1() {
     std::vector<std::string> list = utils::readFileLines("..\\Resources\\day1.txt");
