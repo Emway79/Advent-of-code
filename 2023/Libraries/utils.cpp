@@ -89,14 +89,14 @@ bool utils::isPalindrome(const std::string& str) {
     return true;
 }
 
-std::string utils::readFile(std::string pathName) {
+std::string utils::readFile(const std::string& pathName) {
     std::ifstream file(pathName);
     std::stringstream buffer;
     buffer << file.rdbuf();
     return buffer.str();
 }
 
-std::vector<std::string> utils::readFileLines(std::string pathName) {
+std::vector<std::string> utils::readFileLines(const std::string& pathName) {
     std::ifstream file(pathName);
     std::vector<std::string> result;
 

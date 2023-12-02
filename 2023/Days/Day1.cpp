@@ -15,8 +15,7 @@ int64_t solveDay1Part1() {
                 nums.push_back(c - '0');
             }
         }
-        nums.erase(nums.begin() + 1, nums.end() - 1);
-        result += utils::digitsToNum(nums);
+        result += nums[0] * 10 + nums[nums.size() - 1];
     }
 
     return result;
@@ -42,8 +41,7 @@ int64_t solveDay1Part2() {
             }
             index++;
         }
-        nums.erase(nums.begin() + 1, nums.end() - 1);
-        result += utils::digitsToNum(nums);
+        result += nums[0] * 10 + nums[nums.size() - 1];
         ++index;
     }
 

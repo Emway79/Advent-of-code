@@ -40,9 +40,9 @@ namespace utils {
 
     bool isPalindrome(const std::string& str);
 
-    std::vector<std::string> readFileLines(std::string pathName);
+    std::vector<std::string> readFileLines(const std::string& pathName);
 
-    std::string readFile(std::string pathName);
+    std::string readFile(const std::string& pathName);
 }
 
 
