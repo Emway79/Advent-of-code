@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Day.hpp"
 #include "../Libraries/utils.hpp"
 
