@@ -66,7 +66,7 @@ int64_t solveDay4Part2() {
             }
         }
 
-        for (int i = card; i < lines.size() && i < card + amount; ++i) {
+        for (int i = card; i < (int) lines.size() && i < card + amount; ++i) {
             copies[i] += copies[card - 1];
         }
         ++card;
