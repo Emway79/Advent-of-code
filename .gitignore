@@ -2,6 +2,10 @@
 **/Resources/*
 
 # 2023
-2023/cmake-build-debug
-2023/cmake-build-release
-2023/.gdbinit
+/2023/cmake-build-debug-mingw/
+/2023/cmake-build-debug-visual-studio/
+/2023/cmake-build-release-mingw/
+/2023/cmake-build-release-visual-studio/
+/2023/cmake-build-release-hs/
+
+/2023/.gdbinit
