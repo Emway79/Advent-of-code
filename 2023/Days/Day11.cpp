@@ -9,38 +9,44 @@ struct Coord {
     int column;
 };
 
-void expandUniverse(std::vector<std::string>& matrix) {
+std::vector<int> expandUniverseRows(std::vector<std::string>& matrix) {
+    std::vector<int> result;
     for (auto row = 0; row < matrix.size(); ++row) {
         std::string &s = matrix[row];
         bool expand = true;
-        for (char& c : s) {
-            if (c != '.' && c != '@') {
+        for (char &c: s) {
+            if (c != '.') {
                 expand = false;
                 break;
             }
         }
         if (expand) {
-            s = std::string(s.size(), '@');
+            result.push_back(row);
         }
     }
 
+    return result;
+}
+
+std::vector<int> expandUniverseColumns(std::vector<std::string>& matrix) {
+    std::vector<int> result;
     for (auto column = 0; column < matrix[0].size(); ++column) {
         bool expand = true;
         for (auto& row : matrix) {
-            if (row[column] != '.' && row[column] != '@') {
+            if (row[column] != '.') {
                 expand = false;
                 break;
             }
         }
         if (expand) {
-            for (auto& i : matrix) {
-                i[column] = '@';
-            }
+            result.push_back(column);
         }
     }
+
+    return result;
 }
 
-int64_t getDistance(Coord& first, Coord& second, std::vector<std::string>& matrix, int64_t expansion) {
+int64_t getDistance(Coord& first, Coord& second, std::vector<int>& rows, std::vector<int>& columns, int64_t expansion) {
     int64_t spaces = 0;
     int vertical = abs(first.row - second.row);
     int horizontal = abs(first.column - second.column);
@@ -56,23 +62,26 @@ int64_t getDistance(Coord& first, Coord& second, std::vector<std::string>& matri
         end.column = first.column;
     }
 
-    for (auto i = start.row; i < end.row; ++i) {
-        if (matrix[i][start.column] == '@') {
+    for (auto column : columns) {
+        if (column > start.column && column < end.column) {
             ++spaces;
         }
     }
-    for (auto i = start.column; i < end.column; ++i) {
-        if (matrix[start.row][i] == '@') {
+
+    for (auto row : rows) {
+        if (row > start.row && row < end.row) {
             ++spaces;
         }
     }
+
 
     return abs(vertical) + abs(horizontal) - spaces + (spaces * expansion);
 }
 
 int64_t solveDay11Part1() {
     std::vector<std::string> matrix = utils::readFileLines("..\\Resources\\day11.txt");
-    expandUniverse(matrix);
+    std::vector<int> rows = expandUniverseRows(matrix);
+    std::vector<int> columns = expandUniverseColumns(matrix);
 
     std::vector<Coord> galaxies;
     for (auto row = 0; row < matrix.size(); ++row) {
@@ -86,7 +95,7 @@ int64_t solveDay11Part1() {
     int64_t result = 0;
     for (auto i = 0; i < galaxies.size() - 1; ++i) {
         for (auto j = i + 1; j < galaxies.size(); ++j) {
-            result += getDistance(galaxies[i], galaxies[j], matrix, 2);
+            result += getDistance(galaxies[i], galaxies[j], rows, columns, 2);
         }
     }
 
@@ -95,7 +104,8 @@ int64_t solveDay11Part1() {
 
 int64_t solveDay11Part2() {
     std::vector<std::string> matrix = utils::readFileLines("..\\Resources\\day11.txt");
-    expandUniverse(matrix);
+    std::vector<int> rows = expandUniverseRows(matrix);
+    std::vector<int> columns = expandUniverseColumns(matrix);
 
     std::vector<Coord> galaxies;
     for (auto row = 0; row < matrix.size(); ++row) {
@@ -109,7 +119,7 @@ int64_t solveDay11Part2() {
     int64_t result = 0;
     for (auto i = 0; i < galaxies.size() - 1; ++i) {
         for (auto j = i + 1; j < galaxies.size(); ++j) {
-            result += getDistance(galaxies[i], galaxies[j], matrix, 1000000);
+            result += getDistance(galaxies[i], galaxies[j], rows, columns, 1000000);
         }
     }
 
