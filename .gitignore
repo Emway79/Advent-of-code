@@ -1,4 +1,9 @@
 **/.idea
+**/out/
+
+**/CMakeSettings.json
+**/.vs/
+
 **/Resources/*
 
 # 2023
