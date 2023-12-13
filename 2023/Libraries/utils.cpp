@@ -110,3 +110,37 @@ std::vector<std::string> utils::readFileLines(const std::string& pathName) {
 
     return result;
 }
+
+void utils::stringStrip(std::string& s, const std::string& strip) {
+    int amount = 0;
+    int stripIndex = 0;
+    for (char& c : s) {
+        if (c != strip[stripIndex]) {
+            break;
+        }
+
+        ++stripIndex;
+        if (stripIndex == strip.length()) {
+            ++amount;
+            stripIndex = 0;
+        }
+    }
+    s.erase(0, amount * strip.length());
+
+    amount = 0;
+    stripIndex = strip.length() - 1;
+    for (int i = s.length() - 1; i >= 0; --i) {
+        if (s[i] != strip[stripIndex]) {
+            break;
+        }
+
+        --stripIndex;
+        if (stripIndex < 0) {
+            ++amount;
+            stripIndex = strip.length() - 1;
+        }
+    }
+
+    int start = s.length() - amount * strip.length();
+    s.erase(start, amount * strip.length());
+}

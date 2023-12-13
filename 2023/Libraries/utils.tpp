@@ -1,5 +1,6 @@
 #include <cmath>
 #include <vector>
+#include <algorithm>
 #include <stdexcept>
 
 template <std::integral integral>

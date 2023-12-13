@@ -10,6 +10,8 @@ namespace utils {
 
     std::vector<std::string> stringSplit(const std::string& string, const std::string& delimiter);
 
+    void stringStrip(std::string& string, const std::string& strip);
+
     template <std::integral integral>
     std::vector<integral> getDivisors(integral number);
 
