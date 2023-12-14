@@ -11,12 +11,12 @@
 int main() {
 
     auto startPart1 = std::chrono::high_resolution_clock::now();
-    auto answerPart1 = AOC2023::solveDay13Part1();
+    auto answerPart1 = AOC2023::solveDay14Part1();
     auto endPart1 = std::chrono::high_resolution_clock::now();
     double elapsedTimeMicPart1 = std::chrono::duration<double, std::micro>(endPart1 - startPart1).count();
 
     auto startPart2 = std::chrono::high_resolution_clock::now();
-    auto answerPart2 = AOC2023::solveDay13Part2();
+    auto answerPart2 = AOC2023::solveDay14Part2();
     auto endPart2 = std::chrono::high_resolution_clock::now();
     double elapsedTimeMicPart2 = std::chrono::duration<double, std::micro>(endPart2 - startPart2).count();
 
