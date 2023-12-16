@@ -1,4 +1,5 @@
 #include <queue>
+#include <unordered_set>
 
 #include "Day.hpp"
 #include "../Libraries/utils.hpp"
@@ -14,7 +15,21 @@ struct Laser {
     int row;
     int column;
     Dir dir;
+
+    bool operator==(Laser o) const {
+        return this->row == o.row && this->column == o.column && this->dir == o.dir;
+    }
 };
+
+namespace std {
+
+template<> struct hash<Laser> {
+    std::size_t operator()(const Laser& s) const noexcept {
+        return s.row + 1000 * s.column + 1000000 * s.dir;
+    }
+};
+
+}
 
 namespace AOC2023 {
 
@@ -61,20 +76,23 @@ void increaseBeam(Laser& laser) {
 std::vector<std::string> energize(Laser start, const std::vector<std::string>& grid) {
     std::vector<std::string> result = grid;
     std::queue<Laser> queue;
+    std::unordered_set<Laser> set;
     queue.push(start);
-    int64_t iteration = 0;
 
     while(!queue.empty()) {
-        ++iteration;
-        if (iteration == 1000000) {
-            break;
-        }
         Laser laser = queue.front();
         queue.pop();
 
         nextLocation:
         if (laser.row < 0 || laser.row >= grid.size() || laser.column < 0 || laser.column >= grid[0].size()) {
             continue;
+        }
+        if (grid[laser.row][laser.column] != '.') {
+            if (set.contains(laser)) {
+                continue;
+            } else {
+                set.insert(laser);
+            }
         }
         result[laser.row][laser.column] = '#';
 
