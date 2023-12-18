@@ -33,4 +33,6 @@ add_executable(AdventOfCode2023
         Days/Day14.cpp
         Days/Day15.cpp
         Days/Day16.cpp
+        Days/Day17.cpp
+        Days/Day18.cpp
 )
