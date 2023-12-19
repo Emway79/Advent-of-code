@@ -71,10 +71,6 @@ std::string getFinalWorkflow(const std::array<int64_t, 4>& part, const std::unor
     return "A";
 }
 
-int64_t calculatePossibilities(std::array<int64_t, 8>& ranges) {
-    return (ranges[1] - ranges[0]) * (ranges[3] - ranges[2]) * (ranges[5] - ranges[4]) * (ranges[7] - ranges[6]);
-}
-
 std::array<std::array<int64_t, 8>, 2> splitRanges(const std::array<int64_t, 8>& ranges, int64_t value, int category, bool smallerThan) {
     std::array<int64_t, 8> low = ranges;
     std::array<int64_t, 8> high = ranges;
@@ -92,7 +88,11 @@ std::array<std::array<int64_t, 8>, 2> splitRanges(const std::array<int64_t, 8>& 
 
 int64_t getAcceptedParts(std::array<int64_t, 8>& categories, const std::unordered_map<std::string, std::vector<Rule>>& workflows, const std::string& start) {
     if (start == "A") {
-        return calculatePossibilities(categories);
+        return (categories[1] - categories[0]) *
+               (categories[3] - categories[2]) *
+               (categories[5] - categories[4]) *
+               (categories[7] - categories[6]);
+
     } else if (start == "R") {
         return 0;
     }
