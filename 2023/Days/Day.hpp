@@ -65,6 +65,9 @@ int64_t solveDay18Part2();
 int64_t solveDay19Part1();
 int64_t solveDay19Part2();
 
+int64_t solveDay20Part1();
+int64_t solveDay20Part2();
+
 }
 
 
