@@ -1,150 +1,177 @@
 #include <queue>
-#include <array>
 
 #include "Day.hpp"
 #include "../Libraries/utils.hpp"
 
-enum Dir : uint32_t {
+enum Dir: int32_t {
     UP = 0,
     DOWN = 1,
     LEFT = 2,
     RIGHT = 3
 };
 
-struct Node {
-    uint32_t row;
-    uint32_t column;
-    uint32_t distance;
-    Dir dir;
+struct Edge;
 
-    bool operator<(const Node& o) const {
-        return this->distance > o.distance;
+struct Vertex {
+    int row;
+    int column;
+    int32_t cost = INT32_MAX;
+    std::vector<Edge> edges;
+
+    bool operator<(const Vertex& o) const {
+        return this->cost > o.cost;
     }
 };
 
+struct Edge {
+    int32_t cost;
+    Vertex& destination;
+};
+
+
 namespace AOC2023 {
 
-std::vector<std::vector<std::array<Node, 4>>> createGraph(const std::vector<std::string>& grid) {
-    std::vector<std::vector<std::array<Node, 4>>> graph(grid.size(), std::vector<std::array<Node, 4>>(grid[0].size(), std::array<Node, 4>()));
-    for (uint32_t row = 0; row < grid.size(); ++row) {
-        for (uint32_t column = 0; column < grid[0].size(); ++column) {
-            graph[row][column][UP] = {row, column, UINT32_MAX, UP};
-            graph[row][column][DOWN] = {row, column, UINT32_MAX, DOWN};
-            graph[row][column][LEFT] = {row, column, UINT32_MAX, LEFT};
-            graph[row][column][RIGHT] = {row, column, UINT32_MAX, RIGHT};
+
+void addEdges(const int row, const int column, const int minDistance, const int maxDistance, std::vector<std::vector<std::vector<Vertex>>>& graph, const std::vector<std::string>& grid) {
+    Vertex& up = graph[row][column][UP];
+    up.row = row;
+    up.column = column;
+    Vertex& down = graph[row][column][DOWN];
+    down.row = row;
+    down.column = column;
+
+    int32_t upCost = 0;
+    int32_t downCost = 0;
+    for (int dist = 1; dist <= maxDistance; ++dist) {
+        int upY = row - dist;
+        int downY = row + dist;
+        if (dist < minDistance) {
+            if (upY >= 0) {
+                upCost += grid[upY][column] - '0';
+            }
+            if (downY < graph.size()) {
+                downCost += grid[downY][column] - '0';
+            }
+            continue;
+        }
+
+        if (upY >= 0) {
+            upCost += grid[upY][column] - '0';
+            up.edges.push_back({upCost, graph[upY][column][LEFT]});
+            up.edges.push_back({upCost, graph[upY][column][RIGHT]});
+        }
+        if (downY < graph.size()) {
+            downCost += grid[downY][column] - '0';
+            down.edges.push_back({downCost, graph[downY][column][LEFT]});
+            down.edges.push_back({downCost, graph[downY][column][RIGHT]});
         }
     }
 
-    graph[0][0][DOWN].distance = 0;
-    graph[0][0][RIGHT].distance = 0;
+    Vertex& left = graph[row][column][LEFT];
+    left.row = row;
+    left.column = column;
+    Vertex& right = graph[row][column][RIGHT];
+    right.row = row;
+    right.column = column;
+
+    int32_t leftCost = 0;
+    int32_t rightCost = 0;
+    for (int dist = 1; dist <= maxDistance; ++dist) {
+        int leftX = column - dist;
+        int rightX = column + dist;
+        if (dist < minDistance) {
+            if (leftX >= 0) {
+                leftCost += grid[row][leftX] - '0';
+            }
+            if (rightX < graph[0].size()) {
+                rightCost += grid[row][rightX] - '0';
+            }
+            continue;
+        }
+
+        if (leftX >= 0) {
+            leftCost += grid[row][leftX] - '0';
+            left.edges.push_back({leftCost, graph[row][leftX][UP]});
+            left.edges.push_back({leftCost, graph[row][leftX][DOWN]});
+        }
+        if (rightX < graph[0].size()) {
+            rightCost += grid[row][rightX] - '0';
+            right.edges.push_back({rightCost, graph[row][rightX][UP]});
+            right.edges.push_back({rightCost, graph[row][rightX][DOWN]});
+        }
+    }
+
+}
+
+std::vector<std::vector<std::vector<Vertex>>> createGraph(const std::vector<std::string>& input, const int minDistance, const int maxDistance) {
+    std::vector<std::vector<std::vector<Vertex>>> graph(
+        input.size(), std::vector<std::vector<Vertex>>(
+            input[0].size(), std::vector<Vertex>(
+                    4, Vertex()
+                )));
+    graph[0][0][DOWN].cost = 0;
+    graph[0][0][RIGHT].cost = 0;
+
+    for (int row = 0; row < graph.size(); ++row) {
+        for (int column = 0; column < graph[0].size(); ++column) {
+            addEdges(row, column, minDistance, maxDistance, graph, input);
+        }
+    }
+
     return graph;
 }
 
-void updateQueue(Node& node, std::priority_queue<Node>& pq, const std::vector<std::string>& grid, std::vector<std::vector<std::array<Node, 4>>>& graph, int minDistance, int maxDistance) {
-    uint32_t inc = node.distance;
-    switch (node.dir) {
-        case UP: {
-            for (int32_t row = node.row - 1; row >= 0 && row >= node.row - 3; --row) {
-                inc += grid[row][node.column] - '0';
-                if (inc < graph[row][node.column][LEFT].distance) {
-                    graph[row][node.column][LEFT].distance = inc;
-                    pq.push(graph[row][node.column][LEFT]);
-                }
-                if (inc < graph[row][node.column][RIGHT].distance) {
-                    graph[row][node.column][RIGHT].distance = inc;
-                    pq.push(graph[row][node.column][RIGHT]);
-                }
-            }
-            break;
-        }
-
-        case DOWN: {
-            for (int32_t i = node.row + 1; i < grid.size() && i <= node.row + 3; ++i) {
-                inc += grid[i][node.column] - '0';
-                if (inc < graph[i][node.column][LEFT].distance) {
-                    graph[i][node.column][LEFT].distance = inc;
-                    pq.push(graph[i][node.column][LEFT]);
-                }
-                if (inc < graph[i][node.column][RIGHT].distance) {
-                    graph[i][node.column][RIGHT].distance = inc;
-                    pq.push(graph[i][node.column][RIGHT]);
-                }
-            }
-            break;
-        }
-
-        case LEFT: {
-            for (int32_t i = node.column - 1; i >= 0 && i >= node.column - 3; --i) {
-                inc += grid[node.row][i] - '0';
-                if (inc < graph[node.row][i][UP].distance) {
-                    graph[node.row][i][UP].distance = inc;
-                    pq.push(graph[node.row][i][UP]);
-                }
-                if (inc < graph[node.row][i][DOWN].distance) {
-                    graph[node.row][i][DOWN].distance = inc;
-                    pq.push(graph[node.row][i][DOWN]);
-                }
-            }
-            break;
-        }
-
-        case RIGHT: {
-            for (int32_t i = node.column + 1; i < grid[0].size() && i <= node.column + 3; ++i) {
-                inc += grid[node.row][i] - '0';
-                if (inc < graph[node.row][i][UP].distance) {
-                    graph[node.row][i][UP].distance = inc;
-                    pq.push(graph[node.row][i][UP]);
-                }
-                if (inc < graph[node.row][i][DOWN].distance) {
-                    graph[node.row][i][DOWN].distance = inc;
-                    pq.push(graph[node.row][i][DOWN]);
-                }
-            }
-            break;
-        }
-    }
-}
 
 int64_t solveDay17Part1() {
     std::vector<std::string> grid = utils::readFileLines("..\\Resources\\day17.txt");
-    std::vector<std::vector<std::array<Node, 4>>> graph = createGraph(grid);
-    std::priority_queue<Node> pq;
+    std::vector<std::vector<std::vector<Vertex>>> graph = createGraph(grid, 1, 3);
+    std::priority_queue<Vertex> pq;
     pq.push(graph[0][0][DOWN]);
     pq.push(graph[0][0][RIGHT]);
 
-    while(!pq.empty() && pq.top().distance != UINT32_MAX) {
-        Node node = pq.top();
+    while (!pq.empty()) {
+        Vertex v = pq.top();
         pq.pop();
-
-        if (node.row == grid.size() - 1 && node.column == grid[0].size() - 1) {
-            return node.distance;
+        if (v.row == grid.size() - 1 && v.column == grid[0].size() -1) {
+            return v.cost;
         }
 
-        updateQueue(node, pq, grid, graph, 1, 3);
+        for (const Edge& e : v.edges) {
+            Vertex& destination = e.destination;
+            if (destination.cost > v.cost + e.cost) {
+                destination.cost = v.cost + e.cost;
+                pq.push(destination);
+            }
+        }
     }
 
-    return UINT32_MAX;
+    return -1;
 }
 
 int64_t solveDay17Part2() {
     std::vector<std::string> grid = utils::readFileLines("..\\Resources\\day17.txt");
-    std::vector<std::vector<std::array<Node, 4>>> graph = createGraph(grid);
-    std::priority_queue<Node> pq;
+    std::vector<std::vector<std::vector<Vertex>>> graph = createGraph(grid, 4, 10);
+    std::priority_queue<Vertex> pq;
     pq.push(graph[0][0][DOWN]);
     pq.push(graph[0][0][RIGHT]);
 
-    while(!pq.empty() && pq.top().distance != UINT32_MAX) {
-        Node node = pq.top();
+    while (!pq.empty()) {
+        Vertex v = pq.top();
         pq.pop();
-
-        if (node.row == grid.size() - 1 && node.column == grid[0].size() - 1) {
-            return node.distance;
+        if (v.row == grid.size() - 1 && v.column == grid[0].size() -1) {
+            return v.cost;
         }
 
-        updateQueue(node, pq, grid, graph, 4, 10);
+        for (const Edge& e : v.edges) {
+            Vertex& destination = e.destination;
+            if (destination.cost > v.cost + e.cost) {
+                destination.cost = v.cost + e.cost;
+                pq.push(destination);
+            }
+        }
     }
-    
-    return UINT32_MAX;
+
+    return -1;
 }
 
 
