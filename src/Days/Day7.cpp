@@ -1,4 +1,4 @@
-
+#include <algorithm>
 #include "Day.hpp"
 #include "../Libraries/utils.hpp"
 
@@ -85,7 +85,7 @@ int64_t solveDay7Part1() {
         );
     }
 
-    std::sort(hands.begin(), hands.end(), sortHands);
+    sort(hands.begin(), hands.end(), sortHands);
     int64_t result = 0;
     for (int64_t i = 1; i <= hands.size(); ++i) {
         result += i * hands[i - 1].bet;

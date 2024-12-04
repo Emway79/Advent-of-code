@@ -32,7 +32,7 @@ int64_t solveDay1Part2() {
                 nums.push_back(c - '0');
             } else  {
                 std::string si = s.substr(index, s.size());
-                for (int i = 0; i < 9; ++i) {
+                for (auto i = 0; i < 9; ++i) {
                     if (si.starts_with(num[i])) {
                         nums.push_back(i + 1);
                         break;

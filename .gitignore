@@ -1,16 +1,5 @@
-**/.idea
-**/out/
+.idea
 
-**/CMakeSettings.json
-**/.vs/
+src/Resources/
 
-**/Resources/*
-
-# 2023
-/2023/.gdbinit
-
-/2023/cmake-build-debug-gcc/
-/2023/cmake-build-debug-msvc/
-/2023/cmake-build-release-gcc/
-/2023/cmake-build-release-msvc/
-/2023/cmake-build-releasehs-gcc/
+/cmake*

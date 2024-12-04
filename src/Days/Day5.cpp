@@ -5,6 +5,10 @@
 
 namespace AOC2023 {
 
+#ifndef LONG_LONG_MAX
+     #define LONG_LONG_MAX 0x7fffffffffffffffLL
+#endif
+
 
 int64_t solveDay5Part1() {
     std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day5.txt");

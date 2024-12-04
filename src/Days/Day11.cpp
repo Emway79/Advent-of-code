@@ -1,7 +1,6 @@
 #include "Day.hpp"
 #include "../Libraries/utils.hpp"
 
-
 namespace AOC2023 {
 
 struct Coord {
