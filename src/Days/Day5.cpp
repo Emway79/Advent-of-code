@@ -11,7 +11,7 @@ namespace AOC2023 {
 
 
 int64_t solveDay5Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day5.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day5.txt");
     std::vector<int64_t> seeds;
     for (const std::string& s : utils::stringSplit(lines[0].substr(7), " ")) {
         seeds.push_back(stoll(s));
@@ -47,7 +47,7 @@ int64_t solveDay5Part1() {
 }
 
 int64_t solveDay5Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day5.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day5.txt");
     std::vector<int64_t> seeds;
     for (const std::string& s : utils::stringSplit(lines[0].substr(7), " ")) {
         seeds.push_back(stoll(s));

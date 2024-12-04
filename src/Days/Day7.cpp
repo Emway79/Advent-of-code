@@ -64,7 +64,7 @@ int64_t getStrength(const std::string& hand, bool part2) {
 
 
 int64_t solveDay7Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day7.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day7.txt");
     std::vector<Hand> hands;
     for (std::string& line : lines) {
         std::vector<std::string> split = utils::stringSplit(line, " ");
@@ -95,7 +95,7 @@ int64_t solveDay7Part1() {
 }
 
 int64_t solveDay7Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day7.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day7.txt");
     std::vector<Hand> hands;
     for (std::string& line : lines) {
         std::vector<std::string> split = utils::stringSplit(line, " ");

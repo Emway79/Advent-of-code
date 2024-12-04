@@ -65,7 +65,7 @@ void calculateDistance(std::vector<std::vector<int64_t>>& states) {
 
 
 int64_t solveDay21Part1() {
-    std::vector<std::string> grid = utils::readFileLines("..\\Resources\\day21.txt");
+    std::vector<std::string> grid = utils::readFileLines("..\\src\\Resources\\day21.txt");
     std::vector<std::vector<int64_t>> states(grid.size(), std::vector<int64_t>(grid[0].size(), 0));
     setStartState(states, grid);
     calculateDistance(states);
@@ -88,7 +88,7 @@ int64_t solveDay21Part1() {
 }
 
 int64_t solveDay21Part2() {
-    std::vector<std::string> grid = utils::readFileLines("..\\Resources\\day21.txt");
+    std::vector<std::string> grid = utils::readFileLines("..\\src\\Resources\\day21.txt");
     std::vector<std::vector<int64_t>> states(grid.size(), std::vector<int64_t>(grid[0].size(), 0));
     setStartState(states, grid);
 

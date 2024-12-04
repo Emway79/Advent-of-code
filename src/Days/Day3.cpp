@@ -13,7 +13,7 @@ struct Number {
 
 
 int64_t solveDay3Part1() {
-    std::vector<std::string> matrix = utils::readFileLines("..\\Resources\\day3.txt");
+    std::vector<std::string> matrix = utils::readFileLines("..\\src\\Resources\\day3.txt");
     int64_t result = 0;
     size_t width = matrix[0].size();
     size_t length = matrix.size();
@@ -69,7 +69,7 @@ int64_t solveDay3Part1() {
 }
 
 int64_t solveDay3Part2() {
-    std::vector<std::string> matrix = utils::readFileLines("..\\Resources\\day3.txt");
+    std::vector<std::string> matrix = utils::readFileLines("..\\src\\Resources\\day3.txt");
     std::vector<std::vector<Number>> numbers;
 
     int64_t result = 0;

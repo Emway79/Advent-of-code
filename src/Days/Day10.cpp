@@ -193,7 +193,7 @@ void floodFill(std::vector<std::string>& matrix) {
 
 
 int64_t solveDay10Part1() {
-    std::vector<std::string> matrix = utils::readFileLines("..\\Resources\\day10.txt");
+    std::vector<std::string> matrix = utils::readFileLines("..\\src\\Resources\\day10.txt");
     Coord current = findStart(matrix);
 
     int64_t result = 0;
@@ -209,7 +209,7 @@ int64_t solveDay10Part1() {
 }
 
 int64_t solveDay10Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day10.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day10.txt");
     std::vector<std::string> matrix = expandMatrix(lines);
 
     Coord current = findStart(matrix);

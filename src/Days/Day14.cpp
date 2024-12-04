@@ -104,7 +104,7 @@ void tiltGrid(std::vector<std::string>& rocks) {
 
 
 int64_t solveDay14Part1() {
-    std::vector<std::string> rocks = utils::readFileLines("..\\Resources\\day14.txt");
+    std::vector<std::string> rocks = utils::readFileLines("..\\src\\Resources\\day14.txt");
     tiltNorth(rocks);
 
     int64_t result = countNorthSupportLoad(rocks);
@@ -113,7 +113,7 @@ int64_t solveDay14Part1() {
 }
 
 int64_t solveDay14Part2() {
-    std::vector<std::string> rocks = utils::readFileLines("..\\Resources\\day14.txt");
+    std::vector<std::string> rocks = utils::readFileLines("..\\src\\Resources\\day14.txt");
     std::unordered_map<int64_t, int64_t> hashes;
 
     int64_t cycleOffset = -1;

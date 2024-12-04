@@ -20,7 +20,7 @@ bool isAllZero(std::vector<int64_t>& numbers) {
 
 
 int64_t solveDay9Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day9.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day9.txt");
     int64_t result = 0;
 
     for (std::string& line : lines) {
@@ -56,7 +56,7 @@ int64_t solveDay9Part1() {
 }
 
 int64_t solveDay9Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day9.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day9.txt");
     int64_t result = 0;
 
     for (std::string& line : lines) {

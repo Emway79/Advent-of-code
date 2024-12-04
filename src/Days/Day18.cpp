@@ -40,7 +40,7 @@ int64_t getArea(std::vector<Coord>& coords) {
 }
 
 int64_t solveDay18Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day18.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day18.txt");
     std::vector<Coord> coords;
     Coord location = {0, 0};
 
@@ -60,7 +60,7 @@ int64_t solveDay18Part1() {
 }
 
 int64_t solveDay18Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day18.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day18.txt");
     std::vector<Coord> coords;
     Coord location = {0, 0};
 

@@ -149,7 +149,7 @@ std::vector<std::string> energize(Laser start, const std::vector<std::string>& g
 }
 
 int64_t solveDay16Part1() {
-    std::vector<std::string> grid = utils::readFileLines("..\\Resources\\day16.txt");
+    std::vector<std::string> grid = utils::readFileLines("..\\src\\Resources\\day16.txt");
 
     grid = energize({0, 0, Right}, grid);
     int64_t result = countEnergized(grid);
@@ -158,7 +158,7 @@ int64_t solveDay16Part1() {
 }
 
 int64_t solveDay16Part2() {
-    std::vector<std::string> grid = utils::readFileLines("..\\Resources\\day16.txt");
+    std::vector<std::string> grid = utils::readFileLines("..\\src\\Resources\\day16.txt");
     int64_t result = 0;
 
     for (auto row = 0; row < grid.size(); ++row) {

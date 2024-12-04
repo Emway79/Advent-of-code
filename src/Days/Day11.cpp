@@ -78,7 +78,7 @@ int64_t getDistance(Coord& first, Coord& second, std::vector<int>& rows, std::ve
 }
 
 int64_t solveDay11Part1() {
-    std::vector<std::string> matrix = utils::readFileLines("..\\Resources\\day11.txt");
+    std::vector<std::string> matrix = utils::readFileLines("..\\src\\Resources\\day11.txt");
     std::vector<int> rows = expandUniverseRows(matrix);
     std::vector<int> columns = expandUniverseColumns(matrix);
 
@@ -102,7 +102,7 @@ int64_t solveDay11Part1() {
 }
 
 int64_t solveDay11Part2() {
-    std::vector<std::string> matrix = utils::readFileLines("..\\Resources\\day11.txt");
+    std::vector<std::string> matrix = utils::readFileLines("..\\src\\Resources\\day11.txt");
     std::vector<int> rows = expandUniverseRows(matrix);
     std::vector<int> columns = expandUniverseColumns(matrix);
 

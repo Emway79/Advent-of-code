@@ -7,7 +7,7 @@ namespace AOC2023 {
 
 
 int64_t solveDay4Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day4.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day4.txt");
     int64_t result = 0;
     for (std::string& line : lines) {
         std::vector<std::string> sides = utils::stringSplit(line.substr(9), " | ");
@@ -41,7 +41,7 @@ int64_t solveDay4Part1() {
 }
 
 int64_t solveDay4Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day4.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day4.txt");
     std::vector<int64_t> copies(lines.size(), 1);
     int card = 1;
 

@@ -10,7 +10,7 @@ int64_t solveDay2Part1() {
     int64_t result = 0;
     int id = 1;
     int cutoff = 8;
-    std::vector<std::string> list = utils::readFileLines("..\\Resources\\day2.txt");
+    std::vector<std::string> list = utils::readFileLines("..\\src\\Resources\\day2.txt");
 
     for (const std::string& line : list) {
         int maxRed = 0;
@@ -52,7 +52,7 @@ int64_t solveDay2Part2() {
     int64_t result = 0;
     int id = 1;
     int cutoff = 8;
-    std::vector<std::string> list = utils::readFileLines("..\\Resources\\day2.txt");
+    std::vector<std::string> list = utils::readFileLines("..\\src\\Resources\\day2.txt");
 
     for (const std::string& line : list) {
         int maxRed = 0;

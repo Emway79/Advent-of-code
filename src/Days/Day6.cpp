@@ -29,7 +29,7 @@ std::vector<std::string> parse(const std::string& line) {
 
 
 int64_t solveDay6Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day6.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day6.txt");
     std::vector<int64_t> times = parseInt(lines[0]);
     std::vector<int64_t> distances = parseInt(lines[1]);
     int64_t result = 1;
@@ -49,7 +49,7 @@ int64_t solveDay6Part1() {
 }
 
 int64_t solveDay6Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day6.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day6.txt");
     std::vector<std::string> times = parse(lines[0]);
     std::vector<std::string> distances = parse(lines[1]);
 

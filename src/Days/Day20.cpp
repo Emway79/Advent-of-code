@@ -81,7 +81,7 @@ std::unordered_map<std::string, Module> createModules(const std::vector<std::str
 }
 
 int64_t solveDay20Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day20.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day20.txt");
     std::unordered_map<std::string, Module> modules = createModules(lines);
     int64_t lowPulses = 0;
     int64_t highPulses = 0;
@@ -129,7 +129,7 @@ int64_t solveDay20Part1() {
 }
 
 int64_t solveDay20Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day20.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day20.txt");
     std::unordered_map<std::string, Module> modules = createModules(lines);
     std::vector<int64_t> lows(4, 0);
     int found = 0;

@@ -39,7 +39,7 @@ int64_t asciiLabelHash(const std::string& s) {
 
 
 int64_t solveDay15Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day15.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day15.txt");
     int64_t result = 0;
     for (std::string& s : utils::stringSplit(lines[0], ",")) {
         result += asciiHash(s);
@@ -49,7 +49,7 @@ int64_t solveDay15Part1() {
 }
 
 int64_t solveDay15Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day15.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day15.txt");
     std::vector<std::vector<Lens>> boxes(256, std::vector<Lens>());
 
     for (std::string& s : utils::stringSplit(lines[0], ",")) {

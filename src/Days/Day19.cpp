@@ -129,7 +129,7 @@ int64_t getAcceptedParts(std::array<int64_t, 8>& categories, const std::unordere
 
 
 int64_t solveDay19Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day19.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day19.txt");
     std::unordered_map<std::string, std::vector<Rule>> workflows;
     int64_t result = 0;
 
@@ -159,7 +159,7 @@ int64_t solveDay19Part1() {
 }
 
 int64_t solveDay19Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day19.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day19.txt");
     std::unordered_map<std::string, std::vector<Rule>> workflows;
 
     for (const std::string& line : lines) {

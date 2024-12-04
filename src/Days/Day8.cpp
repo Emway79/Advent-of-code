@@ -8,7 +8,7 @@
 namespace AOC2023 {
 
 int64_t solveDay8Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day8.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day8.txt");
     std::unordered_map<std::string, std::vector<std::string>> network;
 
     for (int i = 2; i < lines.size(); ++i) {
@@ -39,7 +39,7 @@ int64_t solveDay8Part1() {
 }
 
 int64_t solveDay8Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day8.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day8.txt");
     std::unordered_map<std::string, std::vector<std::string>> network;
     std::vector<std::string> start;
 

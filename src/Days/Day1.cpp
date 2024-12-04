@@ -6,7 +6,7 @@ namespace AOC2023 {
 std::string num[] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
 
 int64_t solveDay1Part1() {
-    std::vector<std::string> list = utils::readFileLines("..\\Resources\\day1.txt");
+    std::vector<std::string> list = utils::readFileLines("..\\src\\Resources\\day1.txt");
     long long result = 0;
     for (std::string s: list) {
         std::vector<int> nums;
@@ -22,7 +22,7 @@ int64_t solveDay1Part1() {
 }
 
 int64_t solveDay1Part2() {
-    std::vector<std::string> list = utils::readFileLines("..\\Resources\\day1.txt");
+    std::vector<std::string> list = utils::readFileLines("..\\src\\Resources\\day1.txt");
     long long result = 0;
     for (std::string s : list) {
         std::vector<int> nums;

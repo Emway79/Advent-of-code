@@ -90,7 +90,7 @@ int64_t findSmudgeReflection(std::vector<std::string>& grid) {
 }
 
 int64_t solveDay13Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day13.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day13.txt");
     int64_t result = 0;
 
     std::vector<std::string> grid;
@@ -109,7 +109,7 @@ int64_t solveDay13Part1() {
 }
 
 int64_t solveDay13Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day13.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day13.txt");
     int64_t result = 0;
 
     std::vector<std::string> grid;

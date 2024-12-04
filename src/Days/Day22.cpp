@@ -11,13 +11,13 @@ struct Brick {
 };
 
 int64_t solveDay22Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day22.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day22.txt");
 
     return 0;
 }
 
 int64_t solveDay22Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day22.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day22.txt");
 
     return 0;
 }

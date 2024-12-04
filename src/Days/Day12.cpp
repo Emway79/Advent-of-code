@@ -65,7 +65,7 @@ void unfold(std::string& string, std::string& amounts) {
 }
 
 int64_t solveDay12Part1() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day12.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day12.txt");
     int64_t result = 0;
 
     for (std::string& s : lines) {
@@ -78,7 +78,7 @@ int64_t solveDay12Part1() {
 }
 
 int64_t solveDay12Part2() {
-    std::vector<std::string> lines = utils::readFileLines("..\\Resources\\day12.txt");
+    std::vector<std::string> lines = utils::readFileLines("..\\src\\Resources\\day12.txt");
     int64_t result = 0;
 
     for (std::string& s : lines) {

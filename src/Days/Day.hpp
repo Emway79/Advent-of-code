@@ -2,7 +2,6 @@
 #define ADVENTOFCODE_DAYS2023_HPP
 
 
-#include <string>
 #include <cstdint>
 
 
@@ -73,6 +72,15 @@ int64_t solveDay21Part2();
 
 int64_t solveDay22Part1();
 int64_t solveDay22Part2();
+
+int64_t solveDay23Part1();
+int64_t solveDay23Part2();
+
+int64_t solveDay24Part1();
+int64_t solveDay24Part2();
+
+int64_t solveDay25Part1();
+int64_t solveDay25Part2();
 
 
 }

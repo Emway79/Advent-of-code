@@ -123,7 +123,7 @@ std::vector<std::vector<std::vector<Vertex>>> createGraph(const std::vector<std:
 
 
 int64_t solveDay17Part1() {
-    std::vector<std::string> grid = utils::readFileLines("..\\Resources\\day17.txt");
+    std::vector<std::string> grid = utils::readFileLines("..\\src\\Resources\\day17.txt");
     std::vector<std::vector<std::vector<Vertex>>> graph = createGraph(grid, 1, 3);
     std::priority_queue<Vertex> pq;
     pq.push(graph[0][0][DOWN]);
@@ -149,7 +149,7 @@ int64_t solveDay17Part1() {
 }
 
 int64_t solveDay17Part2() {
-    std::vector<std::string> grid = utils::readFileLines("..\\Resources\\day17.txt");
+    std::vector<std::string> grid = utils::readFileLines("..\\src\\Resources\\day17.txt");
     std::vector<std::vector<std::vector<Vertex>>> graph = createGraph(grid, 4, 10);
     std::priority_queue<Vertex> pq;
     pq.push(graph[0][0][DOWN]);
